@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    ["import", {
+      "style": "css",
+      "libraryName": "antd-mobile"
+    }],
+    "transform-flow-strip-types"
+  ],
+  "presets": ["flow"]
+}
