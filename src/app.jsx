@@ -2,8 +2,11 @@
 
 import React from 'react';
 import { render } from 'react-dom'
-
 import { BrowserRouter,  Route, Switch} from 'react-router-dom';
+
+import { Provider } from 'react-redux'
+import todoApp from './reducers'
+const store = createStore(todoApp)
 
 require('./app.scss') 
 
@@ -27,12 +30,14 @@ class App extends React.Component{
 }
 
 render(
-    <BrowserRouter>
-        <Switch>
-            <Route path="/" exact component={TabBar} router={Route}></Route>
-            <Route path="/movieDetail" component={MovieDetail}></Route>
-            <Route path="/login" component={Login}></Route>
-            <Route path="/writeComment" component={WriteComment} router={Route}></Route>
-        </Switch>
-    </BrowserRouter>,
+    <Provider store={store}>
+        <BrowserRouter>
+            <Switch>
+                <Route path="/" exact component={TabBar} router={Route}></Route>
+                <Route path="/movieDetail" component={MovieDetail}></Route>
+                <Route path="/login" component={Login}></Route>
+                <Route path="/writeComment" component={WriteComment} router={Route}></Route>
+            </Switch>
+        </BrowserRouter>
+    </Provider>,
 document.getElementById('app'))
