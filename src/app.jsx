@@ -11,6 +11,8 @@ require('./app.scss')
 import TabBar from './components/common/tabBar'
 import MovieDetail from './components/movie/movieDetail'
 import Login from './components/user/login'
+import UserCenter from './components/user/userCenter'
+import WriteComment from './components/user/writeComment'
 
 
 class App extends React.Component{
@@ -27,9 +29,10 @@ class App extends React.Component{
 render(
     <BrowserRouter>
         <Switch>
-            <Route path="/" exact component={TabBar}></Route>
+            <Route path="/" exact component={TabBar} router={Route}></Route>
             <Route path="/movieDetail" component={MovieDetail}></Route>
             <Route path="/login" component={Login}></Route>
+            <Route path="/writeComment" component={WriteComment} router={Route}></Route>
         </Switch>
     </BrowserRouter>,
 document.getElementById('app'))
