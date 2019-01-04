@@ -5,7 +5,7 @@ import { BrowserRouter, Link, Redirect  } from 'react-router-dom'
 require('./movieLists.scss')
 import { Tabs, WhiteSpace, Badge } from 'antd-mobile'; 
 
-const tabs : Array = [
+const tabs  = [
     { title: '正在上映' },
     { title: '即将上映' }
   ];

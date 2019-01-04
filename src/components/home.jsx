@@ -1,21 +1,24 @@
 import React from 'react';
+import { Link} from 'react-router-dom'
+
+import { List } from 'antd-mobile';
+
+const Item = List.Item;
 
 class Home extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {name: props.name}
-    }
-    componentWillReceiveProps(nextProps){
-        // 
-        console.log(nextProps)
-        this.setState({name: nextProps.name})
-        
-    }
+    
+    
     render() {
         return (
             <div>
-                
-                <div>{this.state.name}</div>
+                <List>
+                    <Link  to="/movie">
+                        <Item arrow="horizontal" >电影</Item>
+                    </Link>
+                    <Link  to="/drag">
+                        <Item arrow="horizontal" >拖拽</Item>
+                    </Link>
+                </List>
             </div>
         )
     }
