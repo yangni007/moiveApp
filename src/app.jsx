@@ -5,8 +5,9 @@ import { render } from 'react-dom'
 import { BrowserRouter,  Route, Switch} from 'react-router-dom';
 
 import { Provider } from 'react-redux'
-import todoApp from './reducers'
-const store = createStore(todoApp)
+import { createStore } from "redux"
+// import todoApp from './reducers'
+// const store = createStore(todoApp)
 
 require('./app.scss') 
 
@@ -30,7 +31,7 @@ class App extends React.Component{
 }
 
 render(
-    <Provider store={store}>
+    // <Provider store={store}>
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={TabBar} router={Route}></Route>
@@ -39,5 +40,6 @@ render(
                 <Route path="/writeComment" component={WriteComment} router={Route}></Route>
             </Switch>
         </BrowserRouter>
-    </Provider>,
+    // </Provider>
+    ,
 document.getElementById('app'))
