@@ -17,9 +17,8 @@ class Tab extends React.Component {
         }
     }
     componentWillMount() {
-        
-        if(this.props.location.state && this.props.location.state.active) {
-            let active = this.props.location.state.active
+        let active = this.props.location && this.props.location.state ? this.props.location.state.active : ''
+        if(active) {
             this.setState({activeTab : active})
         }
     }

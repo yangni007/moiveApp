@@ -7,15 +7,13 @@ import { List } from 'antd-mobile';
 const Item = List.Item;
 
 export default class UserCenter extends React.Component{
-    comment = () => {
-        
-    }
+    
     render() {
         return (
             <div>
                 <List>
                     <Link  to="/writeComment">
-                        <Item arrow="horizontal" onClick={this.comment}>我的评论</Item>
+                        <Item arrow="horizontal">我的评论</Item>
                     </Link>
                 </List>
             </div>
