@@ -1,0 +1,23 @@
+.home {
+    .main{
+        font-size: 24px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        .title{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #59bde5;
+            text-align: center;
+            margin: 30px 0;
+            line-height: 100px;
+        }
+    }
+    .am-list-body {
+        border-bottom: none;
+    }
+    .am-list:last-child {
+        border-bottom: 1px solid #ddd;
+    }
+}
