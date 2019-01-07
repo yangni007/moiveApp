@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
+var autoprefixer = require('autoprefixer')
 function resolve(relatedPath) {
     return path.join(__dirname, relatedPath)
   }
@@ -26,7 +27,7 @@ module.exports = {
             },
             {
                 test: /\.(css|scss)$/,
-                loader: ["style-loader","css-loader", "sass-loader"]
+                loader: ["style-loader","css-loader", "postcss-loader", "sass-loader"]
             }, {
                 test: /\.(png|jpg)$/,
                 // use: 'url?limit=1024&name=[path][name].[ext]&outputPath=img/&publicPath=output/'
