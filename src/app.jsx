@@ -12,12 +12,12 @@ const store = {}
 require('./app.scss') 
 
 
-import TabBar from './components/common/tabBar'
-import MovieDetail from './components/movie/movieDetail'
-import Login from './components/user/login'
-import UserCenter from './components/user/userCenter'
-import WriteComment from './components/user/writeComment'
-import Drag from './components/user/Drag'
+import TabBar from './components/movies/common/tabBar'
+import MovieDetail from './components/movies/movie/movieDetail'
+import Login from './components/movies/user/login'
+import UserCenter from './components/movies/user/userCenter'
+import WriteComment from './components/movies/user/writeComment'
+import Drag from './components/drag/Drag'
 import Home from './components/home'
 
 class App extends React.Component{

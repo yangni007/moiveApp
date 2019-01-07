@@ -6,7 +6,7 @@ import { BrowserRouter,  Route, Switch} from 'react-router-dom';
 
 import { InputItem, List, WingBlank, Flex, Button, Toast} from 'antd-mobile'; 
 
-const api  = require('../../api/fetch').default
+const api  = require('../../../api/fetch').default
 
 export default class Login extends React.Component{
     state = {
@@ -58,7 +58,7 @@ export default class Login extends React.Component{
             <div>
                 <WingBlank size="lg" className="mgt-30 mgb-30">
                     <Flex justify="center">
-                        <img src={require('../../asset/img/user-icon.png')} alt=""/>
+                        <img src={require('../../../asset/img/user-icon.png')} alt=""/>
                     </Flex>
                 </WingBlank>
                 <List  className="my-list">

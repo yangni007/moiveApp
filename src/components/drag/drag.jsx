@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom'
 import { Link} from 'react-router-dom'
-require('../../asset/css/user/drag.scss')
+require('../../asset/css/drag/drag.scss')
 
 import { List } from 'antd-mobile';
 
