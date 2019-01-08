@@ -27,7 +27,7 @@ module.exports = {
             },
             {
                 test: /\.(css|scss)$/,
-                loader: ["style-loader","css-loader", "postcss-loader", "sass-loader"]
+                loader: ["style-loader","css-loader", "postcss-loader", "sass-loader"] // 从后往前执行
             }, {
                 test: /\.(png|jpg)$/,
                 // use: 'url?limit=1024&name=[path][name].[ext]&outputPath=img/&publicPath=output/'

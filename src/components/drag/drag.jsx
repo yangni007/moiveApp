@@ -11,15 +11,40 @@ export default class UserCenter extends React.Component{
     state = {
         offset: {
             left: 0,
-            top: 0
+            top: 0,
+            elLeft: 0,
+            elTop: 0
         },
         dragFlag: false
+    }
+    componentDidMount() {
+        let el = document.getElementById('box')
+        document.onmousemove = (e) => {
+            e = e || event;
+            if(this.state.dragFlag) {
+                let offset = this.state.offset,
+                    moveX = e.clientX - offset.left,
+                    moveY = e.clientY - offset.top,
+                    left = offset.elLeft,
+                    top = offset.elTop;
+                el.style.left = left + moveX + 'px';
+                el.style.top = top + moveY + 'px';
+                offset = {
+                    left: e.clientX,
+                    top: e.clientY,
+                    ...offset
+                }
+                this.setState({offset: offset})
+            }
+        }
     }
     mouseDownEvent = (e) => {
         e.persist()
         let offset = {
             left: e.clientX,
-            top: e.clientY
+            top: e.clientY,
+            elLeft: e.target.offsetLeft,
+            elTop: e.target.offsetTop
         }
         this.setState({offset: offset, dragFlag: true})
     }
@@ -48,8 +73,9 @@ export default class UserCenter extends React.Component{
             <div>
                 <div 
                 className="box" 
+                id="box"
                 onMouseDown={this.mouseDownEvent}
-                onMouseMove={this.mouseMoveEvent}
+                // onMouseMove={this.mouseMoveEvent}
                 onMouseUp={this.mouseUpEvent}></div>
             </div>
             
