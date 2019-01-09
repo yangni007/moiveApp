@@ -19,8 +19,5 @@ var userModel = mongoose.model('users', userSchema);
 userModel.find({'phone': '18826078902'}, (err, data) => {
     console.log('找到一条数据'+data)
 })
-// user.save((err, data) => {
-//     console.log('保存成功一条数据'+ data.phone)
-    
-// })
+
 });
