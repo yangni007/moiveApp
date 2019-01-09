@@ -12,13 +12,8 @@ app.all('*', function(req, res, next){
     console.log('接口')
     next()
 })
-app.post('/login', (req, res) => {
-    console.log(req.body)
-    res.send()
-    
-    res.end()
-})
-// router.initRouter(app)
+
+router.initRouter(app)
 
 
 app.listen(3000, () => {
