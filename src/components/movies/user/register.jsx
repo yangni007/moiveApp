@@ -51,14 +51,14 @@ export default class Login extends React.Component{
             phone: this.state.password
         }
         console.log(api)
-        api.login(params)
+        api.register(params)
     }
     render() {
        return(
             <div>
                 <WingBlank size="lg" className="mgt-30 mgb-30">
                     <Flex justify="center">
-                        <img src={require('../../../asset/img/user-icon.png')} alt=""/>
+                        注册
                     </Flex>
                 </WingBlank>
                 <List  className="my-list">
@@ -79,7 +79,7 @@ export default class Login extends React.Component{
                     >密码</InputItem>
                 </List>
                 <WingBlank size="lg" className="mgt-30 mgb-30">
-                    <Button type="warning" size="middle" onClick={this.login}>登录</Button>
+                    <Button type="warning" size="middle" onClick={this.login}>注册</Button>
                 </WingBlank>
             </div>
        )

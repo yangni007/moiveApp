@@ -15,6 +15,7 @@ require('./app.scss')
 import TabBar from './components/movies/common/tabBar'
 import MovieDetail from './components/movies/movie/movieDetail'
 import Login from './components/movies/user/login'
+import Register from './components/movies/user/register'
 import UserCenter from './components/movies/user/userCenter'
 import WriteComment from './components/movies/user/writeComment'
 import Drag from './components/drag/Drag'
@@ -40,6 +41,7 @@ render(
                 <Route path="/movie"  component={TabBar} router={Route}></Route>
                 <Route path="/movieDetail" component={MovieDetail}></Route>
                 <Route path="/login" component={Login}></Route>
+                <Route path="/register" component={Register}></Route>
                 <Route path="/writeComment" component={WriteComment} router={Route}></Route>
             </Switch>
         </BrowserRouter>
