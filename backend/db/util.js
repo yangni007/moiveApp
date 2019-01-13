@@ -25,11 +25,27 @@ function register(params) {
     
     var userModel = mongoose.model('users', userSchema);
     return new Promise((resolve, reject) => {
-        // let user = new userModel({phone: '18826078902', password: '123456'})
-        userModel.insert({'phone': params.phone, 'password': params.password}, (err, data) => {
-            console.log('存成功'+data)
-            resolve(data)
-        })
+        let user = new userModel({'phone': params.phone, 'password': params.password})
+        
+        user.save(function (err, user) {
+            console.log(err)
+            if(err) {
+                reject(err)
+            }
+            console.log('存成功'+user)
+            resolve(user)
+          });
+        // userModel.insert({'phone': params.phone, 'password': params.password}, (err, data) => {
+        //     console.log(err)
+        //     if(err) {
+        //         reject(err)
+        //     }
+        //     console.log('存成功'+data)
+        //     resolve(data)
+
+        // })
+    }).catch(e => {
+        console.log(e)
     })
     
 }

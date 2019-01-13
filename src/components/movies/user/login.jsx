@@ -47,8 +47,8 @@ export default class Login extends React.Component{
             return;  
         }
         let params = {
-            password: this.state.phone,
-            phone: this.state.password
+            password: this.state.password,
+            phone: this.state.phone
         }
         console.log(api)
         api.login(params)

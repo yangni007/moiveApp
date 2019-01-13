@@ -16,8 +16,8 @@ function initRouter(app) {
     app.post('/register', async (req, res) => {
         console.log(req.body)
         DB.register({phone: req.body.phone, password: req.body.password}).then(data => {
-            coonsole.log(data)
-            res.send()
+            console.log(data)
+            res.send('成功')
             res.end()
         })
         
