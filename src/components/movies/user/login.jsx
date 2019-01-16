@@ -50,8 +50,11 @@ export default class Login extends React.Component{
             password: this.state.password,
             phone: this.state.phone
         }
-        console.log(api)
-        api.login(params)
+        
+        api.login(params).then(res => {
+            console.log(this.props)
+            this.props.history.push('/movie')
+        })
     }
     render() {
        return(

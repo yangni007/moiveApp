@@ -9,12 +9,10 @@ function login(params) {
     
     var userModel = mongoose.model('users', userSchema);
     return new Promise((resolve, reject) => {
-        // let user = new userModel({phone: '18826078902', password: '123456'})
         userModel.find({'phone': params.phone}, (err, data) => {
             if(err) {
                 reject(err)
             }
-            console.log('找到一条数据'+data)
             resolve(data)
             
         })
@@ -25,25 +23,24 @@ function register(params) {
     
     var userModel = mongoose.model('users', userSchema);
     return new Promise((resolve, reject) => {
-        let user = new userModel({'phone': params.phone, 'password': params.password})
-        
-        user.save(function (err, user) {
-            console.log(err)
+        // 注册过
+        userModel.find({'phone': params.phone}, (err, data) => {
             if(err) {
                 reject(err)
             }
-            console.log('存成功'+user)
-            resolve(user)
-          });
-        // userModel.insert({'phone': params.phone, 'password': params.password}, (err, data) => {
-        //     console.log(err)
-        //     if(err) {
-        //         reject(err)
-        //     }
-        //     console.log('存成功'+data)
-        //     resolve(data)
-
-        // })
+            if(data.length) {
+                resolve(data)
+            } else {
+                let user = new userModel({'phone': params.phone, 'password': params.password})
+        
+                user.save(function (err, user) {
+                    if(err) {
+                        reject(err)
+                    }
+                    resolve([])
+                });
+            }
+        })
     }).catch(e => {
         console.log(e)
     })

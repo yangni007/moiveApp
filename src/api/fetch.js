@@ -12,21 +12,21 @@ let exportApi = {};
 
 for(let api in config)
     exportApi[api] = function(params, otherParams) {
-
-        switch(config[api].method) {
-            case 'get':
-            case 'delete' :
-            case 'head' :
-            axios[config[api].method](config[api].url, {params, ...otherParams});
-            break;
-            case 'post':
-            case 'put':
-            case 'patch':
-            axios[config[api].method](config[api].url, params, otherParams);
-            break;
-            default:
-            axios[config[api].method](config[api].url, params, otherParams);
-        }
+        
+            switch(config[api].method) {
+                case 'get':
+                case 'delete' :
+                case 'head' :
+                return axios[config[api].method](config[api].url, {params, ...otherParams});
+                case 'post':
+                case 'put':
+                case 'patch':
+                return axios[config[api].method](config[api].url, params, otherParams);
+                default:
+                return axios[config[api].method](config[api].url, params, otherParams);
+            }
+        
+        
         
     }
 
