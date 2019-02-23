@@ -39,9 +39,6 @@ module.exports = {
                     limit: 8192,
                     name:'images/[name].[ext]',
                 }
-            }, {
-                test: /\.(htm|html)$/i,
-                loader: 'html-withimg-loader'
             }]
     },
     devServer: {
