@@ -7,10 +7,15 @@ function resolve(relatedPath) {
   }
 
 module.exports = {
-    entry: './src/app.jsx',
+    entry: {
+        app: './src/app.jsx',
+        react: 'react',
+        reactDom: 'react-dom',
+        antdMobile: 'antd-mobile'
+    },
     output: {
         path: __dirname + '/build',
-        filename: "bundle.js",
+        filename: "app.js",
         // publicPath: 'build/'
     },
     devtool: 'eval-source-map',
@@ -59,6 +64,10 @@ module.exports = {
         extensions: ['*', '.js', '.jsx', '.scss']
     },
     plugins: [
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: ['react', 'reactDom', 'antdMobile'],
+        //     filename: '[name].js'
+        // }),
         new HtmlWebpackPlugin({
         //在最前面先定义下HtmlWebpackPlugin--
         //var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -66,6 +75,18 @@ module.exports = {
             title: '',    //配合html-webpack-plugin的配置
         })
     ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    name: 'react',
+                    chunks: "initial",
+                    minChunks: 2,
+                    filename: '[name].js'
+                }
+            }
+        }
+    },
     performance: {
         hints:false   
     }    

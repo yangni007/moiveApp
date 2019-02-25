@@ -71,12 +71,14 @@ export default class UserCenter extends React.Component{
     render() {
         return (
             <div>
+                {/* 普通的div拖拽 */}
                 <div 
                 className="box" 
                 id="box"
                 onMouseDown={this.mouseDownEvent}
                 // onMouseMove={this.mouseMoveEvent}
-                onMouseUp={this.mouseUpEvent}></div>
+                onMouseUp={this.mouseUpEvent}>普通的div拖拽
+                </div>
             </div>
             
         )
