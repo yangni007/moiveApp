@@ -2,20 +2,27 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 var autoprefixer = require('autoprefixer')
+const AutoDllPlugin = require('autodll-webpack-plugin');
+
 function resolve(relatedPath) {
     return path.join(__dirname, relatedPath)
   }
 
 module.exports = {
     entry: {
+        
         app: './src/app.jsx',
+        // vendor: ['react', 'react-dom', 'react-router-dom'],
         react: 'react',
-        reactDom: 'react-dom',
-        antdMobile: 'antd-mobile'
+        'react-dom': 'react-dom',
+        'react-router': 'react-router',
+        'react-router-dom': 'react-router-dom',
+        'axios': 'axios',
+        'antd-mobile': 'antd-mobile'
     },
     output: {
         path: __dirname + '/build',
-        filename: "app.js",
+        filename: "[name].js",
         // publicPath: 'build/'
     },
     devtool: 'eval-source-map',
@@ -46,6 +53,43 @@ module.exports = {
                 }
             }]
     },
+    
+    resolve: {
+        extensions: ['*', '.js', '.jsx', '.scss']
+    },
+    plugins: [
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: ['react', 'reactDom', 'antdMobile'],
+        //     filename: '[name].js'
+        // }),
+        new HtmlWebpackPlugin({
+        //在最前面先定义下HtmlWebpackPlugin--
+        //var HtmlWebpackPlugin = require('html-webpack-plugin');
+            template: 'src/index.html',
+            title: '',    //配合html-webpack-plugin的配置
+        }),
+
+        new AutoDllPlugin({
+            inject: true, // will inject the DLL bundle to index.html
+            debug: true,
+            filename: '[name].js',
+            path: './build',
+            entry: {
+              dll: [
+                'react',
+                'react-dom',
+                'react-router',
+                'react-router-dom',
+                'axios',
+                'antd-mobile'
+              ]
+            },
+        })
+    ],
+    
+    performance: {
+        hints:false   
+    },
     devServer: {
         contentBase: "./build",//本地服务器所加载的页面所在的目录
         historyApiFallback: true,//不跳转
@@ -59,35 +103,5 @@ module.exports = {
                 secure: false
             }
         }
-    },
-    resolve: {
-        extensions: ['*', '.js', '.jsx', '.scss']
-    },
-    plugins: [
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: ['react', 'reactDom', 'antdMobile'],
-        //     filename: '[name].js'
-        // }),
-        new HtmlWebpackPlugin({
-        //在最前面先定义下HtmlWebpackPlugin--
-        //var HtmlWebpackPlugin = require('html-webpack-plugin');
-            template: 'build/index.html',
-            title: '',    //配合html-webpack-plugin的配置
-        })
-    ],
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    name: 'react',
-                    chunks: "initial",
-                    minChunks: 2,
-                    filename: '[name].js'
-                }
-            }
-        }
-    },
-    performance: {
-        hints:false   
-    }    
+    },   
 };
