@@ -1,7 +1,6 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
-var autoprefixer = require('autoprefixer')
 const AutoDllPlugin = require('autodll-webpack-plugin');
 
 function resolve(relatedPath) {
@@ -10,7 +9,6 @@ function resolve(relatedPath) {
 
 module.exports = {
     entry: {
-        
         app: './src/app.jsx',
         // vendor: ['react', 'react-dom', 'react-router-dom'],
         react: 'react',
@@ -23,7 +21,6 @@ module.exports = {
     output: {
         path: __dirname + '/build',
         filename: "[name].js",
-        // publicPath: 'build/'
     },
     devtool: 'eval-source-map',
     module: {

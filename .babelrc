@@ -6,5 +6,4 @@
     }],
     "transform-flow-strip-types"
   ],
-  "presets": ["flow"]
 }
