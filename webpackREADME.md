@@ -61,5 +61,5 @@ devServer: {
 基本的webpack配置完成了，现在可以添加一些优化的插件
 
 ##### 优化插件
-html-webpack-plugin： 给html文件引入外部资源，生成html文件
+html-webpack-plugin： 给html文件引入外部资源，生成html文件。
 autodll-webpack-plugin： 抽离第三方插件
